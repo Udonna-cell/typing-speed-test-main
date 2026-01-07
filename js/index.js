@@ -224,6 +224,23 @@ function blueprint(label, icon) {
 function compare(i) {
     let { currentIndex, map, input } = state.level.track;
     i = (i.length > 1) ? i[i.length - 1] : i;
+    if (input.length + 1 == map[currentIndex].length + 1) {
+        state.level.track.currentIndex += 1;
+        state.level.track.done += 1;
+        state.level.track.input = "";
+        state.level.track.blueprint += `<span class="wrong"> </span>`;
+        //state.level.track.blueprint = state.level      .track.blueprint + " "
+        return state.level.track.blueprint;
+        /*
+        alert(JSON.stringify({
+          input,
+          length: input.length,
+          map: map[currentIndex],
+          mapLength: map[currentIndex].length
+        }))
+        */
+        //state.level.track.blueprint = state.level.track.blueprint + " "
+    }
     if (i == " ") {
         let remain = map[currentIndex].split("").filter((l, c) => {
             if (c > input.length - 1) {
@@ -259,8 +276,5 @@ function compare(i) {
         state.level.track.blueprint += `<span class="wrong">${map[currentIndex][input.length]}</span>`;
     }
     state.level.track.input += i;
-    if (input.length + 1 == map[currentIndex].length) {
-        //state.level.track.blueprint = state.level.track.blueprint + " "
-    }
     return state.level.track.blueprint;
 }
