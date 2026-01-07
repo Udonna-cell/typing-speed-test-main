@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>typing test</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="nav">
+    <div class="logo">
+      <img src="/assets/images/logo-small.svg" alt="logo" />
+    </div>
+    <div class="result-score">
+      <div class="trophy">
+        <img src="/assets/images/icon-personal-best.svg" alt="trophy" />
+      </div>
+      <p>Best: <span class="light">92 WPM</span></p>
+    </div>
+  </div>
+  <div class="control-pannel">
+    <div>
+      <p>WPM:</p>
+      <p>40</p>
+    </div>
+    <div>
+      <p>Accuracy:</p>
+      <p>90%</p>
+    </div>
+    <div>
+      <p>Time:</p>
+      <p>0:45</p>
+    </div>
+  </div>
+  <div class="control no-highlight">
+    <div>
+      <p class="label">Difficulty:</p>
+      <div class="display">
+        <p>Easy</p>
+        <img src="/assets/images/icon-down-arrow.svg" alt="down-arrow" />
+      </div>
+      <ul class="options">
+        <li><span class="material-symbols-light--task-alt"></span>Easy</li>
+        <li><span class="line-md--circle"></span>Medium</li>
+        <li><span class="line-md--circle"></span>Hard</li>
+      </ul>
+    </div>
+    <div>
+      <p class="label">Mode:</p>
+      <div class="display">
+        <p>Timed (60s)</p>
+        <img src="/assets/images/icon-down-arrow.svg" alt="down-arrow" />
+      </div>
+      <ul class="options">
+        <li> <span class="material-symbols-light--task-alt"></span>Timed (60s)</li>
+        <li> <span class="line-md--circle"></span>Passage</li>
+      </ul>
+    </div>
+  </div>
+  <div class="page no-highlight">
+    <div class="cover">
+      <div>
+        <button class="btn start">Start Typing Test</button>
+        <p>Or click the text and start typing</p>
+        
+      </div>
+    </div>
+    <input type="text" name="page-tracker" id="page-tracker" value="" />
+    <p>
+      <span class="correct">The sun rose over the quiet town. <span class="wrong">Birds sang in the</span> trees as people woke</span><span class="next"> </span>up and started their day. It was going
+      to be a warm and sunny morning.
+      </p>
+  </div>
+  <button class="btn">restart <img src="/assets/images/icon-restart.svg" alt="restart icon" /></button>
+  <script src="/js/index.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
