@@ -186,16 +186,6 @@ typeOptions.forEach((item, key) => {
         isTypeOptionOpen = !isTypeOptionOpen;
     });
 });
-function getRandomNumberByLength(length) {
-    if (length < 1) {
-        return 0; // Or throw an error for invalid length
-    }
-    // Calculate the minimum and maximum possible values for the given length
-    const min = Math.pow(10, length - 1); // e.g., length=4 -> 1000
-    const max = Math.pow(10, length) - 1; // e.g., length=4 -> 9999
-    // Generate a random integer between min (inclusive) and max (inclusive)
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 state.level.index = 0;
 state.level.text = passages["easy"][Math.floor(Math.random() * passages["easy"].length)].text;
 state.level.track.map = state.level.text.split(" ");
@@ -210,7 +200,7 @@ levelOptions.forEach((item, key) => {
             // disconnect the previous active
             levelOptions[state.level.index].innerHTML = blueprint(levels[state.level.index], state.inactive);
             state.level.index = key;
-            state.level.text = passages[levels[key].toLowerCase()][2].text;
+            state.level.text = passages[levels[key].toLowerCase()][Math.floor(Math.random() * passages[levels[key].toLowerCase()].length)].text;
             state.level.track.map = state.level.text.split(" ");
             state.accuracy.total = state.level.track.map.length;
             page.innerHTML = state.level.text;
