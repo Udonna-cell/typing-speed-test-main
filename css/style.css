@@ -171,6 +171,9 @@ button.btn {
   color: hsl(0, 0%, 100%);
   padding: 0.8rem 0;
 }
+.btn.restart {
+  visibility: hidden;
+}
 .cover {
   position: absolute;
   width: 100%;
@@ -199,4 +202,38 @@ button.btn {
 .page > p span.next {
   color: hsl(240, 1%, 79%);
   background: hsl(240, 3%, 46%);
+}
+
+.result {
+  display: none;
+}
+.result > article > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+.result > article > p,
+.result > article > h1 {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+.result > .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.result > .wrapper > div {
+  border: 1px solid hsl(240, 1%, 29%);
+  padding: 1rem;
+  border-radius: 10px;
+}
+.result > .wrapper > div > h3 {
+  font-size: small;
+}
+.result > .wrapper > div > p {
+  font-weight: 700;
+  font-size: 1.7em;
 }
