@@ -237,3 +237,13 @@ button.btn {
   font-weight: 700;
   font-size: 1.7em;
 }
+.result > .wrapper > div > p > span.correct {
+  color: hsl(140, 63%, 57%);
+}
+.result > .wrapper > div > p > span.wrong {
+  color: hsl(354, 63%, 57%);
+}
+.restart.again {
+  background: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 7%);
+}
