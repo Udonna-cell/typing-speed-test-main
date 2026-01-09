@@ -169,8 +169,8 @@ const state = {
             characters: {
                 total: 0,
                 correct: 0,
-                wrong: 0
-            }
+                wrong: 0,
+            },
         },
     },
     type: {
@@ -217,7 +217,8 @@ state.accuracy.total = state.level.track.map.length;
 Accuracy.innerHTML = `${0}%`;
 WPM.innerHTML = `0`;
 page.innerHTML = state.level.text;
-state.level.track.characters.total = (state.level.text.length) - (state.level.track.map.length - 1);
+state.level.track.characters.total =
+    state.level.text.length - (state.level.track.map.length - 1);
 levelOptions.forEach((item, key) => {
     item.addEventListener("click", () => {
         const levels = ["Easy", "Medium", "Hard"];
@@ -290,7 +291,20 @@ pageTracker.addEventListener("input", (ev) => {
 function blueprint(label, icon) {
     return `<span class="${icon}"></span>${label}`;
 }
+let prevI = "";
 function compare(i) {
+    if (prevI.length == 0) {
+        prevI = i;
+    }
+    if (prevI.length > i.length) {
+        i = prevI;
+        pageTracker.value = i;
+        //alert(`${prevI[prevI.length -1]} was deleted`)
+        return state.level.track.blueprint;
+    }
+    else {
+        prevI = i;
+    }
     let { currentIndex, map, input } = state.level.track;
     i = i.length > 1 ? i[i.length - 1] : i;
     if (i == " ") {
