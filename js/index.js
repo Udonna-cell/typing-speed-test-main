@@ -151,6 +151,19 @@ const result = document.querySelector("section.result");
 const WPMResult = document.querySelector(".result > .wrapper > div:nth-child(1) > p");
 const accuracyResult = document.querySelector(".result > .wrapper > div:nth-child(2) > p");
 const wordsResult = document.querySelector(".result > .wrapper > div:nth-child(3) > p");
+const highWPM = document.querySelector(".nav > .result-score > p > span.light");
+//checking for cookie
+let data = {
+    wpm: 0
+};
+if (!document.cookie) {
+    document.cookie = JSON.stringify(data);
+    highWPM.innerHTML = `${data.wpm} WPM`;
+}
+else {
+    data = JSON.parse(document.cookie);
+    highWPM.innerHTML = `${data.wpm} WPM`;
+}
 const state = {
     accuracy: {
         correct: 0,
@@ -270,6 +283,9 @@ startBtn.addEventListener("click", () => {
                 controlPannel.style.display = "none";
                 result.style.display = "block";
                 WPMResult.innerHTML = `${state.accuracy.correct}`;
+                data.wpm = (data.wpm > state.accuracy.correct) ? data.wpm : state.accuracy.correct;
+                highWPM.innerHTML = `${data.wpm} WPM`;
+                document.cookie = JSON.stringify(data);
                 accuracyResult.innerHTML = `${Math.floor((state.accuracy.correct / state.accuracy.total) * 100)}`;
                 wordsResult.innerHTML = `<span class="correct">${state.level.track.characters.correct}</span>/<span class="wrong">${state.level.track.characters.wrong}</span>`;
                 restartBtn.classList.add("again");
@@ -286,7 +302,7 @@ pageTracker.addEventListener("input", (ev) => {
     let done = compare(ev.target.value);
     let remove = state.level.track.done;
     let remain = state.level.text.slice(remove);
-    page.innerHTML = `${done}${(remain[0] == undefined) ? "" : `<span class="next">${remain[0]}</span>`}${remain.slice(1)}`;
+    page.innerHTML = `${done}${remain[0] == undefined ? "" : `<span class="next">${remain[0]}</span>`}${remain.slice(1)}`;
 });
 function blueprint(label, icon) {
     return `<span class="${icon}"></span>${label}`;
