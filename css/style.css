@@ -198,16 +198,22 @@ button.btn {
   position: absolute;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(10px);
   top: 0;
   display: flex;
-  /* visibility: hidden; */
   justify-content: center;
   flex-direction: column;
   text-align: center;
   line-height: 3rem;
   font-weight: 500;
   font-size: 1rem;
+
+  /* Cross-Browser Backdrop Filter */
+  -webkit-backdrop-filter: blur(10px); /* Safari, older Chrome */
+  backdrop-filter: blur(10px);         /* Standard syntax (Firefox, Edge, modern Chrome) */
+
+  /* Fallback for browsers that don't support backdrop-filter */
+  /* If you want a solid background color as a fallback: */
+  /* background-color: rgba(255, 255, 255, 0.7); */
 }
 
 .page > p > span.correct {
