@@ -286,7 +286,7 @@ pageTracker.addEventListener("input", (ev) => {
     let done = compare(ev.target.value);
     let remove = state.level.track.done;
     let remain = state.level.text.slice(remove);
-    page.innerHTML = `${done}<span class="next">${remain[0]}</span>${remain.slice(1)}`;
+    page.innerHTML = `${done}${(remain[0] == undefined) ? "" : `<span class="next">${remain[0]}</span>`}${remain.slice(1)}`;
 });
 function blueprint(label, icon) {
     return `<span class="${icon}"></span>${label}`;
