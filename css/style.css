@@ -48,6 +48,26 @@ body {
   gap: 0.5rem;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+.star-1, .star-2 {
+  display: none;
+}
+.star-2 {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+}
+.star-1 {
+  position: absolute;
+  bottom: 1%;
+  right: 5%;
+  width: 50px;
+}
+
+.star-1 img,
+.star-2 img {
+  width: 100%;
 }
 .nav {
   display: flex;
@@ -214,6 +234,28 @@ button.btn {
   align-items: center;
   margin: 1rem 0;
 }
+.result > article > div > img {
+  box-shadow: 1px 1px 39px hsl(140, 63%, 57%);
+  animation-name: glow;
+  animation-duration: 1s; /* **CORRECTED:** 'animation-direction' should be 'animation-duration' for the time value */
+  animation-direction: alternate; /* **ADDED:** Added a direction for a proper back-and-forth glow effect */
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; /* **ADDED:** For smoother transitions */
+  border-radius: 50%;
+}
+
+@keyframes glow {
+  0% { /* **CORRECTED:** Added 0% and removed the redundant 5% rule */
+    box-shadow: 1px 1px 39px hsl(140, 63%, 57%);
+  }
+  50% {
+    box-shadow: 1px 1px 19px hsl(140, 63%, 57%);
+  }
+  100% { /* **CORRECTED:** Added 100% to ensure the animation completes the cycle */
+    box-shadow: 1px 1px 29px hsl(140, 63%, 57%);
+  }
+}
+
 .result > article > p,
 .result > article > h1 {
   text-align: center;
