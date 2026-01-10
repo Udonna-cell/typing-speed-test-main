@@ -155,7 +155,7 @@ const highWPM = document.querySelector(".nav > .result-score > p > span.light");
 let star1 = document.querySelector(".star-1");
 //checking for cookie
 let data = {
-    wpm: 0
+    wpm: 0,
 };
 if (!document.cookie) {
     document.cookie = JSON.stringify(data);
@@ -284,7 +284,8 @@ startBtn.addEventListener("click", () => {
                 controlPannel.style.display = "none";
                 result.style.display = "block";
                 WPMResult.innerHTML = `${state.accuracy.correct}`;
-                data.wpm = (data.wpm > state.accuracy.correct) ? data.wpm : state.accuracy.correct;
+                data.wpm =
+                    data.wpm > state.accuracy.correct ? data.wpm : state.accuracy.correct;
                 highWPM.innerHTML = `${data.wpm} WPM`;
                 document.cookie = JSON.stringify(data);
                 accuracyResult.innerHTML = `${Math.floor((state.accuracy.correct / state.accuracy.total) * 100)}`;
@@ -307,6 +308,25 @@ pageTracker.addEventListener("input", (ev) => {
     let remove = state.level.track.done;
     let remain = state.level.text.slice(remove);
     page.innerHTML = `${done}${remain[0] == undefined ? "" : `<span class="next">${remain[0]}</span>`}${remain.slice(1)}`;
+    if (state.level.track.currentIndex == state.level.track.map.length - 1 &&
+        remain[0] == undefined) {
+        pageTracker.disabled = "disabled";
+        pageContain.style.display = "none";
+        controlPannel.style.display = "none";
+        result.style.display = "block";
+        WPMResult.innerHTML = `${state.accuracy.correct}`;
+        data.wpm =
+            data.wpm > state.accuracy.correct ? data.wpm : state.accuracy.correct;
+        highWPM.innerHTML = `${data.wpm} WPM`;
+        document.cookie = JSON.stringify(data);
+        accuracyResult.innerHTML = `${Math.floor((state.accuracy.correct / state.accuracy.total) * 100)}`;
+        wordsResult.innerHTML = `<span class="correct">${state.level.track.characters.correct}</span>/<span class="wrong">${state.level.track.characters.wrong}</span>`;
+        star1.style.display = "block";
+        let star2 = document.querySelector(".star-2");
+        star2.style.display = "block";
+        restartBtn.classList.add("again");
+        restartBtn.innerHTML = `Go Again <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20"><path fill="#000" d="M1.563 1.281h.949c.246 0 .422.211.422.457l-.07 3.446a8.6 8.6 0 0 1 7.277-3.868c4.816 0 8.718 3.938 8.718 8.72-.035 4.816-3.937 8.683-8.718 8.683a8.86 8.86 0 0 1-5.871-2.215.446.446 0 0 1 0-.633l.703-.703c.14-.14.386-.14.562 0 1.23 1.09 2.813 1.723 4.606 1.723A6.88 6.88 0 0 0 17.03 10c0-3.797-3.093-6.89-6.89-6.89-2.813 0-5.203 1.687-6.293 4.078l4.43-.106c.245 0 .456.176.456.422v.95c0 .245-.21.421-.421.421h-6.75a.406.406 0 0 1-.422-.422v-6.75c0-.21.175-.422.422-.422"/></svg>`;
+    }
 });
 function blueprint(label, icon) {
     return `<span class="${icon}"></span>${label}`;
