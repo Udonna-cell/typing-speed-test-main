@@ -240,7 +240,7 @@ button.btn {
   align-items: center;
   margin: 1rem 0;
 }
-.result > article > div > img {
+.result > article > div > img.glow {
   box-shadow: 1px 1px 39px hsl(140, 63%, 57%);
   animation-name: glow;
   animation-duration: 1s; /* **CORRECTED:** 'animation-direction' should be 'animation-duration' for the time value */
@@ -249,7 +249,9 @@ button.btn {
   animation-timing-function: ease-in-out; /* **ADDED:** For smoother transitions */
   border-radius: 50%;
 }
-
+.result > article > div > img {
+  border-radius: 50%;
+}
 @keyframes glow {
   0% { /* **CORRECTED:** Added 0% and removed the redundant 5% rule */
     box-shadow: 1px 1px 39px hsl(140, 63%, 57%);
@@ -263,7 +265,7 @@ button.btn {
 }
 
 .result > article > p,
-.result > article > h1 {
+.result > article > h2 {
   text-align: center;
   margin: 0.5rem 0;
 }
@@ -294,4 +296,43 @@ button.btn {
 .restart.again {
   background: hsl(0, 0%, 100%);
   color: hsl(0, 0%, 7%);
+}
+
+.pattern-confetti.fall {
+  position: fixed;
+  width: 100%;
+  right: 0;
+  top: -100%;
+  animation-name: fall;
+  animation-duration: 3.5s; 
+  /* animation-play-state: paused; */
+  /* animation-direction: alternate; */
+  animation-iteration-count: 1;
+  /* animation-timing-function: ease-in-out; */
+}
+.pattern-confetti {
+  position: fixed;
+  width: 100%;
+  right: 0;
+  top: -100%;
+}
+@keyframes fall {
+  0% {
+    width: 150%;
+    /* right: 0; */
+    top: -100%;
+  }
+  50% {
+    width: 250%;
+    /* right: 5%; */
+    top: 100%;
+  }
+  100% {
+    width: 300%;
+    /* right: -30%; */
+    top: 100%;
+  }
+}
+.pattern-confetti > img {
+  width: 100%;
 }
