@@ -332,6 +332,19 @@ pageTracker.addEventListener("input", (ev) => {
             data.wpm > state.accuracy.correct ? data.wpm : state.accuracy.correct;
         highWPM.innerHTML = `${data.wpm} WPM`;
         document.cookie = JSON.stringify(data);
+        const h1 = document.querySelector(".result > article > h2");
+        h1.innerHTML = data.wpm > state.accuracy.correct ? `Test complicated!` : `High Score Smashed!`;
+        const p = document.querySelector(".result > article > p");
+        p.innerHTML = data.wpm > state.accuracy.correct ? `Solid run. Keep pushing to beat your high score` : `You're getting faster. That was incredible typing.`;
+        const img = document.querySelector(".result > article > div > img");
+        const patternConfetti = document.querySelector(".pattern-confetti");
+        img.src = data.wpm > state.accuracy.correct ? `/assets/images/icon-completed.svg` : `/assets/images/icon-new-pb.svg`;
+        if (!(data.wpm > state.accuracy.correct)) {
+            patternConfetti.classList.add("fall");
+            img.classList.remove("glow");
+            star1.style.display = "none";
+            star2.style.display = "none";
+        }
         accuracyResult.innerHTML = `${Math.floor((state.accuracy.correct / state.accuracy.total) * 100)}`;
         wordsResult.innerHTML = `<span class="correct">${state.level.track.characters.correct}</span>/<span class="wrong">${state.level.track.characters.wrong}</span>`;
         star1.style.display = "block";
